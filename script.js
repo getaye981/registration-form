@@ -26,9 +26,16 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   
       // ✅ Validate Phone Number
-      const phonePattern = /^[0-9]{1,13}$/;
+      const phonePattern = /^[0-9]{10,13}$/;
       if (!phonePattern.test(phone)) {
-        messageDiv.textContent = "Invalid phone number! Must be digits only and no more than 13 digits.";
+        messageDiv.textContent = "Invalid phone number! Must be digits only and between 10 and 13 digits.";
+        return;
+      }
+  
+      // ✅ Validate Strong Password
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/;
+      if (!passwordPattern.test(password)) {
+        messageDiv.textContent = "Password must be at least 8 chars long and include an uppercase letter, a lowercase letter, a number, and a special character.";
         return;
       }
   
